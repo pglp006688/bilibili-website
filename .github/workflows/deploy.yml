@@ -28,6 +28,7 @@ jobs:
           cp index.html dist/index.html
           cp -r src dist/src
           if [ -d videos ]; then cp -r videos dist/videos; fi
+          if [ -f config.json ]; then cp config.json dist/config.json; fi
           python scripts/gen_manifest.py --src videos --out dist/videos.json
           touch dist/.nojekyll
 
