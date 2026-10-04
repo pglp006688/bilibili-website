@@ -27,12 +27,15 @@ html,body{height:100%;background:#0b0b0d;color:#fff;overflow:hidden;
 .info .desc{font-size:12px;margin-top:6px;color:#b0b0b0;overflow:hidden;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 
-.side{position:absolute;right:12px;bottom:34px;display:flex;flex-direction:column;gap:18px}
+.side{position:absolute;right:12px;bottom:34px;display:flex;flex-direction:column;gap:22px}
 .side .act{width:46px;height:46px;border:0;border-radius:50%;cursor:pointer;color:#fff;
   font-size:20px;line-height:1;background:rgba(255,255,255,.13);backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;transition:.2s}
+  display:flex;align-items:center;justify-content:center;transition:.2s;
+  position:relative;overflow:visible}
 .side .act:hover{background:rgba(255,255,255,.24)}
 .side .act.on{color:var(--pink);background:rgba(251,114,153,.22)}
+.side .num{position:absolute;bottom:-16px;left:0;right:0;text-align:center;
+  font-size:11px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);pointer-events:none}
 
 .pause{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .pause i{width:0;height:0;margin-left:8px;border-left:26px solid rgba(255,255,255,.85);
@@ -51,32 +54,29 @@ html,body{height:100%;background:#0b0b0d;color:#fff;overflow:hidden;
 
 .empty{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
   color:#8a8a8a;font-size:14px;text-align:center;padding:0 32px}
-  .side .act{position:relative}
-.side .num{position:absolute;bottom:-15px;left:0;right:0;text-align:center;
-  font-size:11px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
-.side .act{overflow:visible}
 
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:30;max-height:62%;
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:30;max-height:64%;
   display:flex;flex-direction:column;background:#1a1a1c;border-radius:14px 14px 0 0;
   transform:translateY(100%);transition:transform .28s ease}
 .sheet.on{transform:translateY(0)}
-.sheet header{display:flex;align-items:center;justify-content:space-between;
-  padding:14px 16px;font-size:14px;border-bottom:1px solid rgba(255,255,255,.07)}
-.sheet header b{font-weight:600}
+.sheet header{display:flex;align-items:center;gap:12px;padding:14px 16px;font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,.07)}
+.sheet header b{flex:1;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sheet header a{color:var(--pink);font-size:12px;text-decoration:none;white-space:nowrap}
 .sheet header button{border:0;background:none;color:#8a8a8a;font-size:18px;cursor:pointer}
 .sheet .body{flex:1;overflow-y:auto;padding:8px 16px 20px}
 .cmt{display:flex;gap:10px;padding:10px 0}
-.cmt .av{flex:0 0 32px;height:32px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:13px;font-weight:600;color:#fff}
+.cmt .av{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#333;object-fit:cover}
 .cmt .c{flex:1;min-width:0}
 .cmt .c .n{font-size:12px;color:#9d9d9d}
-.cmt .c .t{font-size:14px;line-height:1.5;margin-top:3px;color:#eee;word-break:break-word}
+.cmt .c .t{font-size:14px;line-height:1.5;margin-top:3px;color:#eee;word-break:break-word;white-space:pre-wrap}
 .cmt .c .m{font-size:11px;color:#6e6e6e;margin-top:4px}
 .backdrop{position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.45)}
 </style>
 </head>
 <body>
 <div id="app"></div>
+<script>window.EMPTY_TIP = '暂无视频，请参考 IMPORT.md 导入素材后重新部署'</script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <script src="src/app.js" defer></script>
 </body>
